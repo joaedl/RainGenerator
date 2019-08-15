@@ -5,7 +5,7 @@ Adds synthetic rain to images, saves them in the same folder with \_rain added t
 (https://github.com/joaedl/RainGenerator/blob/master/street_rain.jpg)
 
 ###Usage
-raingen.py -i <inputfiles> -a <angle> -l <length> -t <thickness> -n <drop_nrs>
+raingen.py -i \<inputfiles\> -a \<angle\> -l \<length\> -t \<thickness\> -n \<drop_nrs\>
 
 ###Example
 python raingen.py -i imgs/*.jpg -a 10 -l 30 -t 2 -n 1000
