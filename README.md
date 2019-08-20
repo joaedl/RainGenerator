@@ -1,7 +1,7 @@
 # Synthetic rain generator
 Adds synthetic rain to images, saves them in the same folder with \_rain added to the end of the filename(s). If one or more parameters are not given, they will be randomized to reasonable values for each image.
 
-<img src=https://github.com/joaedl/RainGenerator/blob/master/street_rain.jpg>
+<img src=https://github.com/joaedl/RainGenerator/blob/master/rainy.jpg>
 
 ### Usage
 raingen.py -i \<inputfiles\> -a \<angle\> -l \<length\> -t \<thickness\> -n \<drop_nrs\>
