@@ -15,6 +15,9 @@ import math
 degtorad = 0.01745329252
 radtodeg = 1/degtorad;
 
+intensity = 100
+blur = 4
+
 # returns a list of lines
 def rand_lines(w,h,a,l,nrs):
     lines=[]
@@ -50,10 +53,10 @@ def add_rain(img, angle, drop_length, drop_thickness, drop_nrs):
     
     # draw lines to the image
     for l in lines:
-        cv2.line(rain,(l['sx'],l['sy']),(l['ex'],l['ey']),(200,200,200),drop_thickness)
+        cv2.line(rain,(l['sx'],l['sy']),(l['ex'],l['ey']),(intensity,intensity,intensity),drop_thickness)
     
     # add blur to the lines
-    rain = cv2.blur(rain,(7,7))
+    rain = cv2.blur(rain,(blur,blur))
     
     return rain+img
     
