@@ -41,7 +41,6 @@ def rand_lines(w,h,a,l,nrs):
     return lines
 
 def add_rain(img, angle, drop_length, drop_thickness, drop_nrs, blur=4, intensity = 100):
-    print(drop_nrs)
     # create placehplder for rain
     rain=np.zeros((img.shape[0],img.shape[1],img.shape[2]),dtype='uint16')
     
