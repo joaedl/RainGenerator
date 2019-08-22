@@ -15,9 +15,6 @@ import math
 degtorad = 0.01745329252
 radtodeg = 1/degtorad;
 
-intensity = 100
-blur = 4
-
 # returns a list of lines
 def rand_lines(w,h,a,l,nrs):
     lines=[]
@@ -43,7 +40,7 @@ def rand_lines(w,h,a,l,nrs):
         
     return lines
 
-def add_rain(img, angle, drop_length, drop_thickness, drop_nrs):
+def add_rain(img, angle, drop_length, drop_thickness, drop_nrs, blur=4, intensity = 100):
     print(drop_nrs)
     # create placehplder for rain
     rain=np.zeros((img.shape[0],img.shape[1],img.shape[2]),dtype='uint16')
@@ -76,6 +73,8 @@ def print_usage():
     print('-l The max length of rain drops in pixels (the actual length is random up to length), should be matched somehow to the image resolution')
     print('-t Rain drop width')
     print('-n Number of raindrops to be added')
+    print('-b blur filter size')
+    print('-c grayscale intensity of rain streaks')
     print('')
     print('Generated images can be moved to a separate folder with:')
     print('mv ./*_rain.jpg ./rainy')
@@ -86,6 +85,8 @@ def main(argv):
     length = -1
     thickness = -1
     drop_nrs = -1
+    blur = 4
+    intensity = 150
     
     # parse args
     for i,arg in enumerate(argv):
@@ -142,6 +143,24 @@ def main(argv):
             if(drop_nrs < 0):
                 print("Number of drops must be a positive value.")
                 sys.exit(2)
+        elif arg == '-b':
+            try:
+                blur=int(argv[i+1])
+            except:
+                print("Blur filter has to be an integer.")
+                sys.exit(2)
+            if(blur < 1 or blur > 10):
+                print("Blur filter has to be between 1 and 10")
+                sys.exit(2)
+        elif arg == '-c':
+            try:
+                intensity=int(argv[i+1])
+            except:
+                print("Intensity has to be an integer.")
+                sys.exit(2)
+            if(intensity < 0 or intensity > 255):
+                print("Intensity has to be between 0 and 255")
+                sys.exit(2)
 
     # exit if no input files were given
     if not input_files:
@@ -178,7 +197,7 @@ def main(argv):
             next
             
         # add rain
-        rainy = add_rain(img,rangle,rlength,rthickness,rdrop_nrs)
+        rainy = add_rain(img,rangle,rlength,rthickness,rdrop_nrs,blur,intensity)
         
         #save rainy image
         cv2.imwrite(file[:-4]+'_rain'+'.jpg',rainy)

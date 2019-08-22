@@ -4,10 +4,14 @@ Adds synthetic rain to images, saves them in the same folder with \_rain added t
 <img src=https://github.com/joaedl/RainGenerator/blob/master/rainy.jpg>
 
 ### Usage
-raingen.py -i \<inputfiles\> -a \<angle\> -l \<length\> -t \<thickness\> -n \<drop_nrs\>
+```
+raingen.py -i \<inputfiles\> -a \<angle\> -l \<length\> -t \<thickness\> -n \<drop_nrs\> -b \<blur\> -c \<intensity\>
+```
 
 ### Example
-python raingen.py -i imgs/*.jpg -a 10 -l 30 -t 2 -n 1000
+```
+python raingen.py -i imgs/*.jpg -a 10 -l 30 -t 2 -n 1000 -b 4 -c 150
+```
 
 ### Arguments
 - -i Can be given several filenames separated by comma or generated with wildcard * <br>
@@ -15,6 +19,8 @@ python raingen.py -i imgs/*.jpg -a 10 -l 30 -t 2 -n 1000
 - -l The max length of rain drops in pixels (the actual length is random up to length), should be matched somehow to the image resolution <br>
 - -t Rain drop width <br>
 - -n Number of raindrops to be added <br>
+- -b Size of blur filter <br>
+- -c Intensity (grayscale) of rain streaks <br>
 
 ### Dependencies
 * opencv
